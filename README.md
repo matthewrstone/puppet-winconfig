@@ -5,6 +5,6 @@ The module will provide parameter-based configuration for managing the state of 
 
 ### Available Resources
 
-  `winconfig::snmp` - Configure SNMP settings
-  `winconfig::uac`  - Configure UAC settings
+    `winconfig::snmp` - Configure SNMP settings
+    `winconfig::uac`  - Configure UAC settings
 
