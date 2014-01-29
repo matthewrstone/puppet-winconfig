@@ -30,13 +30,17 @@ The module will provide parameter-based configuration for managing the state of 
   **Parameters**
 
   `enable      => present || absent`   - Enable or disable SNMP Service
+
   `contact     => <contact info>`      - Contact email address
+
   `location    => <location info>`     - Location information
+
   `community   => <community string>`  - Community String
+
   `destination => <trap server>`       - SNMP Trap Destination Server
 
 ####winconfig::searchdomains
 
   **Parameters**
 
-  `domains` => 'example.com,example2.com' - Comma-Seperated list of domain names
+  `domains => 'example.com,example2.com'` - Comma-Seperated list of domain names
