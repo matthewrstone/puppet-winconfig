@@ -16,9 +16,10 @@ define winconfig::uac (
         key   => 'hklm\software\Microsoft\Windows\CurrentVersion\Policies\System',
         value => 'EnableLUA',
         type  => 'dword',
-        date  => 0,
+        data  => 0,
       }
     }
   reboot { 'UAC':
-    subscribe => Registry::value['UAC'],
+    subscribe => Registry::Value['UAC'],
+  }
 }
