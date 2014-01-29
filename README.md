@@ -16,9 +16,6 @@ The module will provide parameter-based configuration for managing the state of 
 
 ### Usage
 
-####winconfig::snmp
-
-
 ####winconfig::uac
 
   **Parameters**
