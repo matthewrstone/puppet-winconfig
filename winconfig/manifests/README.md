@@ -5,64 +5,63 @@ The module will provide parameter-based configuration for managing the state of 
 
 ### Available Resources
 
-    winconfig::snmp          - Configure SNMP settings
-    winconfig::uac           - Configure UAC settings
-    winconfig::searchdomains - Configure DNS search domains
-    winconfig::proxy         - Configure Windows Proxy settings
-    winconfig::share         - Configure Windows SMB Share
-    winconfig::share::user   - Configure Windows SMB Share User
+    winconfig::snmp          - Manage SNMP service and settings
+    winconfig::uac           - Manage User Account Control settings
+	winconfig::esc			 - Manage Internet Explorer Enhanced Security Configuration
+	winconfig::rdp			 - Manage RDP services
+	winconfig::proxy         - Manage proxy server settings
+	winconfig::searchdomains - Add DNS search domains
 
 ### Dependencies
 
-    > puppet module install puppetlabs-registry
-    > puppet module install joshcooper-powershell
+This resource type required the Puppet Labs supported `registry` module as well as the powershell module from the Puppet Forge.  They can be installed via Puppet on the command line: 
 
-### Usage
+    [vagrant@master ~] puppet module install puppetlabs-registry
+    [vagrant@master ~] puppet module install joshcooper-powershell
 
-####winconfig::uac
+### Usage ###
+
+You can use *present* or *enabled* to "turn on" services for most of the resources listed above.  You can use *absent* or *disabled* to "turn them off".  Check the code for use cases.
+
+#### winconfig::uac ####
 
   **Parameters**
   
-  `ensure      => present || absent` - Enable or disable User Account Control (UAC)
+	ensure => disabled  # Enable or disable UAC
 
-####winconfig::snmp
-
-  **Parameters**
-
-  `ensure      => present || absent`   - Enable or disable SNMP Service
-
-  `contact     => <contact info>`      - Contact email address
-
-  `location    => <location info>`     - Location information
-
-  `community   => <community string>`  - Community String
-
-  `destination => <trap server>`       - SNMP Trap Destination Server
-
-####winconfig::searchdomains
+#### winconfig::esc ####
 
   **Parameters**
 
-  `domains => 'example.com,example2.com'` - Comma-Seperated list of domain names
+	ensure => disabled	# Enable or disable IE ESC
 
-####winconfig::proxy
-
-  **Parameters**
-
-  `ensure        => present || absent`          - Enable or disable proxy
-
-  `proxyserver   => example.com:8080`           - Proxy server URL
-
-  `proxyoverride => example1.com,example2.com`  - Comma-Separated list of domains to bypass proxy
-
-####winconfig::share
+#### winconfig::rdp ####
 
   **Parameters**
 
-    ensure
-    share_name
-    share_path
-    share_admin
+	ensure => enabled	# Enable Remote Desktop Connections to server
 
-  Supported OS: Windows 2012
-  Note: removing share will not remove directory.  That will have to be done manually.
+#### winconfig::snmp ####
+
+  **Parameters**
+
+	ensure      => present                  # Enable or disable SNMP Service
+	contact     => 'your@contactinfo.com'   # Contact email address
+	location    => 'Inside the house'       # Location information
+	community   => 'abcxyztotallysecure'    # Community String
+	destination => 'trap.server.com'        # SNMP Trap Destination Server
+
+#### winconfig::searchdomains ####
+
+  **Parameters**
+
+	domains => 'example.com,example2.com' # Comma-Seperated list of domain names
+
+#### winconfig::proxy ####
+
+  **Parameters**
+
+	ensure        => present                  # Enable or disable proxy
+	proxyserver   => example.com:8080         # Proxy server URL
+	proxyoverride => server1.com,server2.com  # Comma-Separated list of domains to bypass proxy
+
