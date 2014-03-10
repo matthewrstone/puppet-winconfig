@@ -4,4 +4,5 @@ class profile::windows{
   winconfig::esc { "${::hostname}-esc": ensure => disabled, }
   winconfig::proxy { "${::hostname}-proxy": ensure => disabled, }
   winconfig::rdp { "${::hostname}-rdp": ensure => enabled, }
+  winconfig::ipv6 { "${::hostname}-ipv6": ensure => disabled, }
 }
