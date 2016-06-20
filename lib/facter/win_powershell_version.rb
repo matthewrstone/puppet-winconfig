@@ -1,4 +1,4 @@
-Facter.add("win_dotnet4_version") do
+Facter.add("win_powershell_version") do
   confine :osfamily => "windows"
 
   setcode do
